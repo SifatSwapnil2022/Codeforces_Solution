@@ -1,38 +1,25 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-
-int main() {
-    int the_test_cases;
-    cin >> the_test_cases;
-    while (the_test_cases--) {
-        int lights;
-        cin >> lights;
-        vector<int> switches(2 * lights);
-        int off = 0;
-        int on = 0;
-
-        for (auto &s : switches) {
-            cin >> s;
+int main(){
+    int t,i;
+    cin>>t;
+    while(t--){
+        int numLights;
+        cin>>numLights;
+        int cnt0=0,cnt1=0;
+        int arrStates[2*numLights];
+        for( i=0;i<2*numLights;i++){
+            cin>>arrStates[i];
+            if(arrStates[i]==0)cnt0++;
+        if(arrStates[i]==1)cnt1++;
         }
 
-        for (const auto &s : switches) {
-            if (s == 0) {
-                off++;
-            } else {
-                on++;
-            }
-        }
 
-        if (off == 0) {
-            cout << "0 0" << endl;
-        } else {
-            int ans1 = off % 2;
-            if (off >= on) {
-                cout << ans1 << " " << on << endl;
-            } else {
-                cout << ans1 << " " << off << endl;
-            }
-        }
+        if(arrStates==0)cout<<0<<" "<<0<<endl;
+        else if(cnt0>=cnt1)cout<<cnt0%2<<" "<<cnt1<<endl;
+        else cout<<cnt1%2<<" "<<cnt0<<endl;
+
     }
     return 0;
+
 }
